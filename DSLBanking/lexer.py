@@ -24,7 +24,8 @@ class Lexer:
     def tokenize_code(self):
         token_specification = [
             ('NUMBER',   r'\d+'), # integer
-            ('ID',       r'[A-Za-z]+'), # identifiers
+            ('ACCOUNT',  r'[A-Za-z]{2}\d{6}'), # alphanumeric account numbers 2 Alphabets followed by 6 numbers
+            ('ID',       r'[A-Za-z]+'), # identifiers (words with only letters)
             ('SEMI',     r';'), # statement terminator
             ('SKIP',     r'[ \t]+|(?P<NEWLINE>\n)'), # spaces and tabs (excluding newline)
             ('MISMATCH', r'.'), # all other characters
@@ -53,8 +54,8 @@ class Lexer:
 if __name__ == "__main__":
     code = """
     create account Marshall Korns with balance 999;
-    deposit 500 to MK123456;
-    withdraw 200 from MK123456;
+    deposit 999 to MK123456;
+    withdraw 99 from MK123456;
     balance of MK123456;
     exit;
     """
