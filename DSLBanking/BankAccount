@@ -1,1 +1,8 @@
 class BankAccount:
+  def __init__(self):
+      self.balances=0
+      print("")
+
+
+
+
