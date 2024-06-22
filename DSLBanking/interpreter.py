@@ -38,6 +38,45 @@ def lexer(contents):
     return nLine
     
 def parse(file): 
-  contents = open(file, "r").read()
-  token = lexer(contents)
-  return tokens
+    contents = open(file, "r").read()
+    lines = lexer(contents)
+    for i in range(len(lines)):
+        line = lines[i]
+        inst_line = ""
+        for y in range(len(line)):
+            token = line[y]
+            if token[0] == 'symbol':
+                if token[1] in Symbols:
+                    if token[1] == 'var':
+                        inst_line =+ 'Vars["$v"]
+                    elif token[1] == 'print':
+                        inst_line == 'print($v)'
+                else:
+                    if arrVal(line, y+1)[1] == '=':
+                        if line[y-1][1] == 'var':
+                            if token[1] in Vars:
+                                # throw error
+                                break
+                            else:
+                                if re.match(r'[.a-zA-Z0-9_]+', token[1]):
+                                    inst_line = inst_line.replace('$v', token[1])
+                                else:
+                                    # throw error
+                                    break
+                        else:
+                            if token[1] in Vars:
+                                inst_line = 'Vars["'+ token[1] + '"]'
+                            else:
+                                # throw error
+                                break
+                    else:
+                        if token[1] in Vars:
+                            inst_line = inst_line.replace('$v', str(Vars[token[1]]))
+            elif token[0] == 'expression':
+                inst_line += token[1]
+            elif token[0] == 'number':
+                inst_line += token[1]
+            elif token[0] == 'string':
+                inst_line += '"' + token[1] + '"'
+        exec(inst_line)
+    return lines
