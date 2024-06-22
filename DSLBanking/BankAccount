@@ -1,20 +1,17 @@
 class BankAccount:
   def __init__(self, fName, lName, balance, accountID, accountDigits):
       self.balance = balance
-      self.accountID = accountID
+      self.accountID = self.accountIDMaker()
       self.fName = fName
       self.lName = lName
       self.accountDigits = accountDigits
 
-  def account(self):
+  def accountValidator(self):
      if len(self.accountDigits) != 6:
         return False
      if not self.accountDigits.isdigit():
         return False
-     self.accountID = f"{self.fName[0]}{self.lName[0]}{self.accountDigits}"
-       
+  def accountIDMaker(self):
+    if self.accountValidator() == True:
+       return f"{self.fName[0]}{self.lName[0]}{self.accountDigits}"
     
-
-
-
-
