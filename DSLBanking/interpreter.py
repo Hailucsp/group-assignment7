@@ -36,6 +36,17 @@ def lexer(contents):
                 items.append(("number", token))
         nLines.append(items)
     return nLine
+
+Symbols = [
+    "var",
+    "function",
+    "print"
+]
+
+Vars = {
+    
+}
+
     
 def parse(file): 
     contents = open(file, "r").read()
