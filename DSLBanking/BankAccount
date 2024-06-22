@@ -1,7 +1,19 @@
 class BankAccount:
-  def __init__(self):
-      self.balances=0
-      print("")
+  def __init__(self, fName, lName, balance, accountID, accountDigits):
+      self.balance = balance
+      self.accountID = accountID
+      self.fName = fName
+      self.lName = lName
+      self.accountDigits = accountDigits
+
+  def account(self):
+     if len(self.accountDigits) != 6:
+        return False
+     if self.accountDigits.isdigit():
+        return True
+     self.accountDigits = f"{'0','1','2','3','4','5','6','7','8','9'}" 
+     self.accountID = f"{self.fName[0]}{self.lName[0]}{self.accountDigits}"
+    
 
 
 
