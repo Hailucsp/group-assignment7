@@ -9,10 +9,10 @@ class BankAccount:
   def account(self):
      if len(self.accountDigits) != 6:
         return False
-     if self.accountDigits.isdigit():
-        return True
-     self.accountDigits = f"{'0','1','2','3','4','5','6','7','8','9'}" 
+     if not self.accountDigits.isdigit():
+        return False
      self.accountID = f"{self.fName[0]}{self.lName[0]}{self.accountDigits}"
+       
     
 
 
