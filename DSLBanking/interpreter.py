@@ -69,17 +69,17 @@ def parse(file):
                                 break
                             else:
                                 if re.match(r'[.a-zA-Z0-9_]+', token[1]):
-                                    inst_line = inst_line.replace('$v', token[1])
+                                    inst_line = inst_line.replace(token[1])
                                 else:
                                     break
                         else:
-                            if token[1] in Vars:
+                            if token[1] in Account Number:
                                 inst_line = 'Account Number["'+ token[1] + '"]'
                             else:
                                 break
                     else:
                         if token[1] in Vars:
-                            inst_line = inst_line.replace('$v', str(Vars[token[1]]))
+                            inst_line = inst_line.replace('$v', str(Account Number[token[1]]))
             elif token[0] == 'expression':
                 inst_line += token[1]
             elif token[0] == 'number':
