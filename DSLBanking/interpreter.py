@@ -38,12 +38,12 @@ def lexer(contents):
     return nLine
 
 Symbols = [
-    "var",
+    "Account Number",
     "function",
     "print"
 ]
 
-Vars = {
+Account Number = {
     
 }
 
@@ -59,26 +59,23 @@ def parse(file):
             if token[0] == 'symbol':
                 if token[1] in Symbols:
                     if token[1] == 'var':
-                        inst_line =+ 'Vars["$v"]
+                        inst_line =+ 'Account Number'
                     elif token[1] == 'print':
-                        inst_line == 'print($v)'
+                        inst_line == 'print'
                 else:
                     if arrVal(line, y+1)[1] == '=':
-                        if line[y-1][1] == 'var':
+                        if line[y-1][1] == 'Account Number':
                             if token[1] in Vars:
-                                # throw error
                                 break
                             else:
                                 if re.match(r'[.a-zA-Z0-9_]+', token[1]):
                                     inst_line = inst_line.replace('$v', token[1])
                                 else:
-                                    # throw error
                                     break
                         else:
                             if token[1] in Vars:
-                                inst_line = 'Vars["'+ token[1] + '"]'
+                                inst_line = 'Account Number["'+ token[1] + '"]'
                             else:
-                                # throw error
                                 break
                     else:
                         if token[1] in Vars:
