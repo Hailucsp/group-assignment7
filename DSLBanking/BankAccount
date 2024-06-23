@@ -18,12 +18,14 @@ class BankAccount:
         amount = float(input("Enter an amount: "))
         self.balance += amount
         print("Amount Deposited: ", amount)
+        print("Balance: ", self.balance)
 
     def withdraw(self):
         amount = float(input("Enter amount to be Withdrawn: "))
         if self.balance>=amount:
             self.balance-=amount
             print("\n You Withdrew:", amount)
+            print("Balance: ", self.balance)
         else:
             print("\n Insufficient balance  ")
 
