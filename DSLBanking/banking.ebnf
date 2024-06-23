@@ -11,5 +11,5 @@ statement       ::= (create_account | deposit | withdraw | balance | exit) ";" ;
 identifier      ::= letter { letter | digit } ;
 first_name      ::= letter { letter } ;
 last_name       ::= letter { letter } ;
-account_number  ::= identifier ;
+account_number  ::= letter letter digit digit digit digit digit digit ;
 amount          ::= integer ;
